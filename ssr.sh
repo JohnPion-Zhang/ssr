@@ -214,7 +214,7 @@ pre_install(){
     # Set shadowsocksR config stream ciphers
     while true
     do
-    pick=2
+    pick=1
     expr ${pick} + 1 &>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "[${red}Error${plain}] Please enter a number"
