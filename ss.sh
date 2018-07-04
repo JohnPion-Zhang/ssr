@@ -11,7 +11,7 @@ export PATH
 
 # Current folder
 cur_dir=`pwd`
-yum install -y wget
+
 libsodium_file="libsodium-1.0.16"
 libsodium_url="https://github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz"
 
