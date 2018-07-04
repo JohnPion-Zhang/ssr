@@ -452,8 +452,6 @@ firewall_set(){
 
 # Install Shadowsocks-libev
 install_shadowsocks(){
-    install_needed
-    install_obfs
     install_libsodium
     install_mbedtls
 
@@ -502,6 +500,8 @@ install_shadowsocks(){
 # Install Shadowsocks-libev
 install_shadowsocks_libev(){
     disable_selinux
+    install_needed
+    install_obfs
     pre_install
     download_files
     config_shadowsocks
