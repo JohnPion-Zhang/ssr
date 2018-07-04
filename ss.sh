@@ -99,6 +99,20 @@ get_latest_version(){
     init_script_link="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev"
 }
 
+install_needed(){
+    yum install -y wget git vim
+}
+
+install_obfs(){
+    yum install gcc autoconf libtool automake make zlib-devel openssl-devel asciidoc xmlto
+    git clone https://github.com/shadowsocks/simple-obfs.git
+    cd simple-obfs
+    git submodule update --init --recursive
+    ./autogen.sh
+    ./configure --disable-documentation
+    make && make install
+}
+
 check_installed(){
     if [ "$(command -v "$1")" ]; then
         return 0
@@ -398,7 +412,9 @@ config_shadowsocks(){
     "method":"${shadowsockscipher}",
     "fast_open":${fast_open},
     "nameserver":"8.8.8.8",
-    "mode":"tcp_and_udp"
+    "mode":"tcp_and_udp",
+    "plugin":"obfs-server",
+    "plugin_opts":"obfs=http"
 }
 EOF
 }
@@ -436,6 +452,8 @@ firewall_set(){
 
 # Install Shadowsocks-libev
 install_shadowsocks(){
+    install_needed
+    install_obfs
     install_libsodium
     install_mbedtls
 
@@ -474,8 +492,9 @@ install_shadowsocks(){
     echo -e "Your Server Port      : \033[41;37m ${shadowsocksport} \033[0m"
     echo -e "Your Password         : \033[41;37m ${shadowsockspwd} \033[0m"
     echo -e "Your Encryption Method: \033[41;37m ${shadowsockscipher} \033[0m"
+    echo -e "obfs                  : \033[41;37m obfs-local \033[0m"
+    echo -e "obfs option           : \033[41;37m obfs=http;obfs-host=www.icloud.com \033[0m"
     echo
-    echo "Welcome to visit:https://teddysun.com/357.html"
     echo "Enjoy it!"
     echo
 }
