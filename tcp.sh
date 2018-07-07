@@ -426,11 +426,8 @@ BBR_grub(){
                 exit 1        
             fi
             grub2-set-default 0	 
-	    elif [! -f "/etc/grub.cfg" ]; then
-	    	 echo -e "${Error} /etc/grub.cfg 找不到，请检查."
-                 exit 1
-	    fi
-	    sed -i 's/^default=.*/default=0/g' /etc/grub.conf
+	    elif [ -f "/etc/grub.cfg" ]; then
+	        sed -i 's/^default=.*/default=0/g' /etc/grub.conf
         fi
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
             /usr/sbin/update-grub
