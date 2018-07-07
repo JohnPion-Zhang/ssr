@@ -422,10 +422,12 @@ BBR_grub(){
             sed -i 's/^default=.*/default=0/g' /boot/grub/grub.conf
         elif [[ ${version} = "7" ]]; then
             if [ ! -f "/boot/grub2/grub.cfg" ]; then
-                echo -e "${Error} /boot/grub2/grub.cfg 找不到，请检查."
-                exit 1
+	        if  [! -f "/etc/grub.cfg" ]; then		
+                    exit 1
+		fi
+		sed -i 's/^default=.*/default=0/g' /etc/grub.conf
             fi
-            grub2-set-default 0
+            grub2-set-default 0	     
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
         /usr/sbin/update-grub
