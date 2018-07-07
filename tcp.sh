@@ -428,9 +428,10 @@ BBR_grub(){
 		    exit 1
 		else
 	            sed -i 's/^default=.*/default=0/g' /etc/grub.conf	    
-		fi 	    		 
-	    fi
-	    grub2-set-default 0	    
+		fi
+	    else 
+	        grub2-set-default 0
+	    fi	    
         fi
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
             /usr/sbin/update-grub
