@@ -432,9 +432,9 @@ BBR_grub(){
 	    fi
 	    sed -i 's/^default=.*/default=0/g' /etc/grub.conf
         fi
-    elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
-        /usr/sbin/update-grub
-    fi
+	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+            /usr/sbin/update-grub
+        fi
 }
 
 #############内核管理组件#############
