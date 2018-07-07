@@ -422,8 +422,7 @@ BBR_grub(){
             sed -i 's/^default=.*/default=0/g' /boot/grub/grub.conf
         elif [[ ${version} = "7" ]]; then
             if [ ! -f "/boot/grub2/grub.cfg" ]; then
-		echo -e "${Error} /boot/grub2/grub.cfg 找不到，请检查."
-                exit 1        
+		echo -e "${Error} /boot/grub2/grub.cfg 找不到，请检查."     
             fi
             grub2-set-default 0	 
 	    elif [ -f "/etc/grub.conf" ]; then
