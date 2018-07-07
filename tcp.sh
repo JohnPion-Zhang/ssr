@@ -426,7 +426,7 @@ BBR_grub(){
                 exit 1        
             fi
             grub2-set-default 0	 
-	    elif [ -f "/etc/grub.cfg" ]; then
+	    elif [ -f "/etc/grub.conf" ]; then
 	        sed -i 's/^default=.*/default=0/g' /etc/grub.conf
         fi
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
