@@ -499,12 +499,12 @@ install_shadowsocks(){
 install_shadowsocks_libev(){
     disable_selinux
     install_needed
-    install_obfs
     pre_install
     download_files
     config_shadowsocks
     firewall_set
     install_shadowsocks
+    install_obfs
     /etc/init.d/shadowsocks restart
 }
 
