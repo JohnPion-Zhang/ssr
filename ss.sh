@@ -111,6 +111,21 @@ install_obfs(){
     ./autogen.sh && ./configure --disable-documentation && make && make install
 }
 
+show_config(){
+    clear
+    echo
+    echo -e "Congratulations, Shadowsocks-libev server install completed!"
+    echo -e "Your Server IP        : \033[41;37m $(get_ip) \033[0m"
+    echo -e "Your Server Port      : \033[41;37m ${shadowsocksport} \033[0m"
+    echo -e "Your Password         : \033[41;37m ${shadowsockspwd} \033[0m"
+    echo -e "Your Encryption Method: \033[41;37m ${shadowsockscipher} \033[0m"
+    echo -e "obfs                  : \033[41;37m obfs-local \033[0m"
+    echo -e "obfs option           : \033[41;37m obfs=http;obfs-host=www.icloud.com \033[0m"
+    echo
+    echo "Enjoy it!"
+    echo
+}
+
 check_installed(){
     if [ "$(command -v "$1")" ]; then
         return 0
@@ -480,19 +495,6 @@ install_shadowsocks(){
     rm -rf ${shadowsocks_libev_ver} ${shadowsocks_libev_ver}.tar.gz
     rm -rf ${libsodium_file} ${libsodium_file}.tar.gz
     rm -rf ${mbedtls_file} ${mbedtls_file}-gpl.tgz
-
-    clear
-    echo
-    echo -e "Congratulations, Shadowsocks-libev server install completed!"
-    echo -e "Your Server IP        : \033[41;37m $(get_ip) \033[0m"
-    echo -e "Your Server Port      : \033[41;37m ${shadowsocksport} \033[0m"
-    echo -e "Your Password         : \033[41;37m ${shadowsockspwd} \033[0m"
-    echo -e "Your Encryption Method: \033[41;37m ${shadowsockscipher} \033[0m"
-    echo -e "obfs                  : \033[41;37m obfs-local \033[0m"
-    echo -e "obfs option           : \033[41;37m obfs=http;obfs-host=www.icloud.com \033[0m"
-    echo
-    echo "Enjoy it!"
-    echo
 }
 
 # Install Shadowsocks-libev
@@ -506,6 +508,7 @@ install_shadowsocks_libev(){
     install_shadowsocks
     install_obfs
     /etc/init.d/shadowsocks restart
+    show_config
 }
 
 # Uninstall Shadowsocks-libev
