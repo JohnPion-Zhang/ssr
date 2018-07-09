@@ -504,6 +504,7 @@ install_shadowsocks_libev(){
     config_shadowsocks
     firewall_set
     install_shadowsocks
+    /etc/init.d/shadowsocks restart
 }
 
 # Uninstall Shadowsocks-libev
