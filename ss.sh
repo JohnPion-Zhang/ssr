@@ -107,7 +107,8 @@ install_obfs(){
     yum install -y gcc autoconf libtool automake make zlib-devel openssl-devel asciidoc xmlto
     git clone https://github.com/shadowsocks/simple-obfs.git
     cd simple-obfs
-    git submodule update --init --recursive && ./autogen.sh && ./configure --disable-documentation && make && make install
+    git submodule update --init --recursive 
+    ./autogen.sh && ./configure --disable-documentation && make && make install
 }
 
 check_installed(){
