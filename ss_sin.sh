@@ -425,9 +425,7 @@ config_shadowsocks(){
     "method":"${shadowsockscipher}",
     "fast_open":${fast_open},
     "nameserver":"8.8.8.8",
-    "mode":"tcp_and_udp",
-    "plugin":"obfs-server",
-    "plugin_opts":"obfs=http"
+    "mode":"tcp_and_udp"
 }
 EOF
 }
