@@ -119,8 +119,6 @@ show_config(){
     echo -e "Your Server Port      : \033[41;37m ${shadowsocksport} \033[0m"
     echo -e "Your Password         : \033[41;37m ${shadowsockspwd} \033[0m"
     echo -e "Your Encryption Method: \033[41;37m ${shadowsockscipher} \033[0m"
-    echo -e "obfs                  : \033[41;37m obfs-local \033[0m"
-    echo -e "obfs option           : \033[41;37m obfs=http;obfs-host=www.icloud.com \033[0m"
     echo
     echo "Enjoy it!"
     echo
