@@ -76,3 +76,49 @@ config_conn(){
     echo "限制连接数完毕"
 }
 
+#start
+start_menu(){
+    clear
+    echo "========================="
+    echo " 介绍：适用于CentOS7"
+    echo " 作者：atrandys"
+    echo " 网站：www.atrandys.com"
+    echo " Youtube：atrandys"
+    echo "========================="
+    echo "1. 开启ssh等"
+    echo "2. 禁止邮箱"
+    echo "3. 禁止常用关键字"
+    echo "4. 开放自定义端口"
+    echo "5. 连接数限制"
+    echo "0. 退出"
+    echo
+    read -p "请输入数字:" num
+    case "$num" in
+    	1)
+	    config_default
+	    ;;
+	    2)
+	    config_mail
+	    ;;
+        3)
+	    config_keyword
+	    ;;
+        4)
+	    config_port
+	    ;;
+        5)
+	    config_conn
+	    ;;
+	    0)
+	    exit 1
+	    ;;
+	    *)
+	    clear
+	    echo "请输入正确数字"
+	    sleep 5s
+	    start_menu
+	    ;;
+        esac
+}
+
+start_menu
