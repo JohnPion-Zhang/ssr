@@ -118,7 +118,7 @@ start_menu(){
 	sleep 5s
 	start_menu
 	;;
-        esac
+    esac
 }
 
 start_menu
