@@ -22,8 +22,8 @@ config_default(){
 config_mail(){
     iptables -A OUTPUT -p tcp -m multiport --dports 24,25,26,50,57,105,106,109,110,143 -j DROP
     iptables -A OUTPUT -p udp -m multiport --dports 24,25,26,50,57,105,106,109,110,143 -j DROP
-    iptables -A OUTPUT -p tcp -m multiport --dports 158,209,218,220,465,587,993,995,1109.60177,60179 -j DROP
-    iptables -A OUTPUT -p udp -m multiport --dports 158,209,218,220,465,587,993,995,1109.60177,60179 -j DROP
+    iptables -A OUTPUT -p tcp -m multiport --dports 158,209,218,220,465,587,993,995,1109,60177,60179 -j DROP
+    iptables -A OUTPUT -p udp -m multiport --dports 158,209,218,220,465,587,993,995,1109,60177,60179 -j DROP
     service iptables save
     echo "禁止邮箱完毕"
 }
