@@ -79,7 +79,8 @@ config_conn(){
 
 #start
 start_menu(){
-while 1 do
+while [ 1 ] 
+do
     echo "========================="
     echo " 介绍：适用于CentOS7"
     echo " 作者：atrandys"
