@@ -20,8 +20,10 @@ config_default(){
 
 #禁止邮箱
 config_mail(){
-    iptables -A OUTPUT -p tcp -m multiport --dports 24,25,26,50,57,105,106,109,110,143,158,209,218,220,465,587,993,995,1109.60177,60179 -j DROP
-    iptables -A OUTPUT -p udp -m multiport --dports 24,25,26,50,57,105,106,109,110,143,158,209,218,220,465,587,993,995,1109.60177,60179 -j DROP
+    iptables -A OUTPUT -p tcp -m multiport --dports 24,25,26,50,57,105,106,109,110,143 -j DROP
+    iptables -A OUTPUT -p udp -m multiport --dports 24,25,26,50,57,105,106,109,110,143 -j DROP
+    iptables -A OUTPUT -p tcp -m multiport --dports 158,209,218,220,465,587,993,995,1109.60177,60179 -j DROP
+    iptables -A OUTPUT -p udp -m multiport --dports 158,209,218,220,465,587,993,995,1109.60177,60179 -j DROP
     service iptables save
     echo "禁止邮箱完毕"
 }
@@ -64,6 +66,7 @@ config_port(){
     read -p "输入结束端口：" stop_port
     iptables -A INPUT -p tcp -m tcp --dport ${start_port}:${stop_port} -j ACCEPT
     iptables -A INPUT -p udp -m udp --dport ${start_port}:${stop_port} -j ACCEPT
+    echo "开放端口完毕"
 }
 
 #连接数限制
