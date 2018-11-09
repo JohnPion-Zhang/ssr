@@ -79,7 +79,7 @@ config_conn(){
 
 #start
 start_menu(){
-    clear
+  while 1 do
     echo "========================="
     echo " 介绍：适用于CentOS7"
     echo " 作者：atrandys"
@@ -120,6 +120,7 @@ start_menu(){
 	start_menu
 	;;
     esac
+  done
 }
 
 start_menu
