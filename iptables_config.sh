@@ -66,6 +66,7 @@ config_port(){
     read -p "输入结束端口：" stop_port
     iptables -A INPUT -p tcp -m tcp --dport ${start_port}:${stop_port} -j ACCEPT
     iptables -A INPUT -p udp -m udp --dport ${start_port}:${stop_port} -j ACCEPT
+    service iptables save
     echo "开放端口完毕"
 }
 
@@ -77,6 +78,7 @@ config_conn(){
     read -p "输入每个ip允许的连接数：" conn_num
     iptables -A INPUT -p tcp --dport ${start_conn}:${stop_conn} -m connlimit --connlimit-above ${conn_num} -j DROP
     iptables -A INPUT -p udp --dport ${start_conn}:${stop_conn} -m connlimit --connlimit-above ${conn_num} -j DROP
+    service iptables save
     echo "限制连接数完毕"
 }
 
