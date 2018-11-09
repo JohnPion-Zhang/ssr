@@ -95,29 +95,29 @@ start_menu(){
     read -p "请输入数字:" num
     case "$num" in
     	1)
-	    config_default
-	    ;;
-	    2)
-	    config_mail
-	    ;;
+	config_default
+	;;
+	2)
+	config_mail
+	;;
         3)
-	    config_keyword
-	    ;;
+	config_keyword
+	;;
         4)
-	    config_port
-	    ;;
+	config_port
+	;;
         5)
-	    config_conn
-	    ;;
-	    0)
-	    exit 1
-	    ;;
-	    *)
-	    clear
-	    echo "请输入正确数字"
-	    sleep 5s
-	    start_menu
-	    ;;
+	config_conn
+	;;
+	0)
+	exit 1
+	;;
+	*)
+	clear
+	echo "请输入正确数字"
+	sleep 5s
+	start_menu
+	;;
         esac
 }
 
