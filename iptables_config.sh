@@ -82,6 +82,15 @@ config_conn(){
     echo "限制连接数完毕"
 }
 
+#清空规则
+config_clear(){
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -F
+    service iptables save
+    echo "清除规则完毕"
+}
+
 #start
 start_menu(){
 while [ 1 ] 
@@ -97,6 +106,7 @@ do
     echo "3. 禁止常用关键字"
     echo "4. 开放自定义端口"
     echo "5. 连接数限制"
+    echo "6. 清除所有规则"
     echo "0. 退出"
     echo
     read -p "请输入数字:" num
@@ -115,6 +125,9 @@ do
 	;;
         5)
 	config_conn
+	;;
+        6)
+	config_clear
 	;;
 	0)
 	exit 1
