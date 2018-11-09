@@ -101,7 +101,7 @@ do
     echo " 网站：www.atrandys.com"
     echo " Youtube：atrandys"
     echo "========================="
-    echo "1. 开启ssh等"
+    echo "1. 开启ssh（必须）"
     echo "2. 禁止邮箱"
     echo "3. 禁止常用关键字"
     echo "4. 开放自定义端口"
