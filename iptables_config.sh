@@ -7,6 +7,7 @@ config_default(){
     yum install -y iptables-services
     systemctl start iptables
     systemctl enable iptables
+    iptables -F
     ssh_port=$(awk '$1=="Port" {print $2}' /etc/ssh/sshd_config)
     if [ ! -n "$ssh_port" ]; then
         iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
