@@ -14,6 +14,8 @@ config_default(){
     else
         iptables -A INPUT -p tcp -m tcp --dport ${ssh_port} -j ACCEPT
     fi
+    iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
     iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
     iptables -A INPUT -i lo -j ACCEPT
     iptables -P INPUT DROP
